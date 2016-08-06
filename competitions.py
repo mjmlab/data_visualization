@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+#import seaborn as sns
 import os
 import sys
 
@@ -33,16 +33,29 @@ def main():
     # Save dataframe to csv
     df_summary.to_csv('results/' + results_basename + '.csv')
 
-    # Plot competitions
+    # Set up plot
     # Create a new figure of size 8x6 points, using 100 dots per inch
     plt.figure(figsize=(8,6), dpi=100)
     # Create a new subplot from a grid of 1x1
     plt.subplot(111)
-    plt.scatter(df_summary['competition'], df_summary['CI'], marker='o', s=75,
+
+    # Data
+    y = df_summary['CI']
+    x = df_summary['competition']
+    x = np.random.normal(x, 0.05, size=len(y)) # jitter
+
+    # Scale ([xmin, xmax, ymin, ymax])
+    xmin = min(x) - 1
+    xmax = max(x) + 1
+    plt.axis([xmin, xmax, -3, 3])
+
+    # Plot
+    plt.scatter(x, y, marker='o', s=75,
                 color='gray', linewidths=2, alpha=0.7)
     plt.scatter(df_summary.groupby('competition', as_index=False).median()['competition'],
                 df_summary.groupby('competition', as_index=False).median()['CI'], marker='_', s=500,
                 color='black', linewidths=2, alpha=1.0)
+
     # Save plot to png, pdf
     plt.savefig('results/' + results_basename + '.png')
     plt.savefig('results/' + results_basename + '.pdf')
