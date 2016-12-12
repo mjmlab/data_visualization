@@ -14,8 +14,11 @@ def main():
     # Import data
     dataset = sys.argv[1]
     results_basename = os.path.basename(dataset).split('.')[0]
-    df_inoculum = pd.read_excel(dataset, sheetname='inoculum')
-    df = pd.read_excel(dataset, sheetname='squid')
+    df_inoculum = pd.read_excel(dataset, sheetname='input')
+    df = pd.read_excel(dataset, sheetname='output')
+
+    #create way to differentiate B and C dilutions - code it in or put on different sheets
+    #ignore apo squid - Competition 1 or A dilutions - delete this from working table?
 
     # Calculate input ratios
     df_inoculum['ratioWB'] = df_inoculum['white']/df_inoculum['blue']
@@ -28,7 +31,7 @@ def main():
     df_summary.rename(columns={'ratioWB_x': 'ratioWB_o', 'ratioWB_y': 'ratioWB_i'}, inplace=True)
     df_summary['CI'] = np.log10(df_summary['ratioWB_o'] / df_summary['ratioWB_i'])
     # Mean of replicate plates per animal
-    df_summary = df_summary.groupby(['competition', 'animal'], as_index=False).mean()
+    df_summary = df_summary.groupby(['competition', 'squid'], as_index=False).mean()
 
     # Save dataframe to csv
     df_summary.to_csv('results/' + results_basename + '.csv')
