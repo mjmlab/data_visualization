@@ -36,3 +36,8 @@ Note that `pandas` has decent [visualization of dataframes](http://pandas.pydata
 
 
 ## Denise's Code and Examples
+
+### Squid Competition Assay
+[Excel Data Template](data/competition_template.xlsx)  
+[Code Example](Competition_Example.ipynb)  
+   This code produces a graph similar to the following:
