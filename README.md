@@ -33,3 +33,6 @@ Note that `pandas` has decent [visualization of dataframes](http://pandas.pydata
 ## Some good examples
 
 [Seattle bike sharing](https://jakevdp.github.io/blog/2015/10/17/analyzing-pronto-cycleshare-data-with-python-and-pandas/)  
+
+
+## Denise's Code and Examples
