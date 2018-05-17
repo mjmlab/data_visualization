@@ -33,3 +33,12 @@ Note that `pandas` has decent [visualization of dataframes](http://pandas.pydata
 ## Some good examples
 
 [Seattle bike sharing](https://jakevdp.github.io/blog/2015/10/17/analyzing-pronto-cycleshare-data-with-python-and-pandas/)  
+
+
+## Denise's Code and Examples
+
+### Squid Competition Assay
+[Excel Data Template](data/competition_template.xlsx)  
+[Code Example](Competition_Example.ipynb)  
+This code produces a graph similar to the following:
+![graph_example](results/competition_example_graph.pdf)
